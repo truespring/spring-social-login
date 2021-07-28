@@ -8,4 +8,9 @@ public class FacebookOauth implements SocialOauth {
     public String getOauthRedirectURL() {
         return "";
     }
+
+    @Override
+    public String requestAccessToken(String code) {
+        return null;
+    }
 }

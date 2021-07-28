@@ -8,4 +8,9 @@ public class NaverOauth implements SocialOauth {
     public String getOauthRedirectURL() {
         return "";
     }
+
+    @Override
+    public String requestAccessToken(String code) {
+        return null;
+    }
 }
