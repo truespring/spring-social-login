@@ -75,7 +75,7 @@ public class GoogleOauth implements SocialOauth {
     }
 
     /**
-     * java 표준 URL 통신 방
+     * java 표준 URL 통신 방식
      *
      * @param code Api 에서 넘어온 code
      * @return sb
