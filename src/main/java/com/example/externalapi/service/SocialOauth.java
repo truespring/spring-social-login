@@ -2,6 +2,9 @@ package com.example.externalapi.service;
 
 import com.example.externalapi.constants.SocialLoginType;
 
+/**
+ * service 역할
+ */
 public interface SocialOauth {
     /**
      * 각 Social Login 페이지로 Redirect 처리할 URL Build
