@@ -27,7 +27,7 @@ public class OauthService {
      * @param socialLoginType 소셜 로그인 타입
      */
     public void request(SocialLoginType socialLoginType) {
-        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
+        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType); // 이 부분 이해 안감
         String redirectURL = socialOauth.getOauthRedirectURL();
         try {
             response.sendRedirect(redirectURL);

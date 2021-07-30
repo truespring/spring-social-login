@@ -20,6 +20,11 @@ public interface SocialOauth {
      */
     String requestAccessToken(String code);
 
+    /**
+     * interface에서 메소드를 구현하는 방법 - default
+     *
+     * @return enum
+     */
     default SocialLoginType type() {
         if (this instanceof FacebookOauth) {
             return SocialLoginType.FACEBOOK;
