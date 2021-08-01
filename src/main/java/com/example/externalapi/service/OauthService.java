@@ -15,10 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OauthService {
     private final List<SocialOauth> socialOauthList;
-    private final FacebookOauth facebookOauth;
-    private final GoogleOauth googleOauth;
-    private final KakaoOauth kakaoOauth;
-    private final NaverOauth naverOauth;
     private final HttpServletResponse response;
 
     /**
@@ -27,7 +23,7 @@ public class OauthService {
      * @param socialLoginType 소셜 로그인 타입
      */
     public void request(SocialLoginType socialLoginType) {
-        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType); // 이 부분 이해 안감
+        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType); // TODO 이 부분 이해 안감
         String redirectURL = socialOauth.getOauthRedirectURL();
         try {
             response.sendRedirect(redirectURL);
