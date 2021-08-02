@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OauthService {
-    private final List<SocialOauth> socialOauthList;
+    private final List<SocialOauth> socialOauthList; // TODO implements 하는 클래스를 리스트로 만드는 것?
     private final HttpServletResponse response;
 
     /**
@@ -23,7 +23,9 @@ public class OauthService {
      * @param socialLoginType 소셜 로그인 타입
      */
     public void request(SocialLoginType socialLoginType) {
-        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType); // TODO 이 부분 이해 안감
+        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
+        // TODO 이 부분 이해 안감 - GOOGLE로 받은 인자가 어떻게 GoogleOauth.java 파일을 호출할 수 있는지
+        // TODO GoogleOauth, FacebookOauth 등의 파일은 무슨 구조를 통해 생성하여 활용하는지
         String redirectURL = socialOauth.getOauthRedirectURL();
         try {
             response.sendRedirect(redirectURL);
