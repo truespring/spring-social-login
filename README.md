@@ -11,3 +11,6 @@
    
 5. callback URL 을 통해 구글에서 보내준 데이터를 json 형태로 받을 수 있다.
 6. requestAccessToken 메소드를 통해 소셜 로그인 타입과 code 를 인자로 넘긴다.
+7. 다시 한 번 GoogleOauth 클래스를 찾아서 requestAccessToken 메소드에 code 인자를 넘긴다.
+8. Map 을 만들어 필요한 키, 벨류를 담고 post 로 넘긴다.
+9. HttpStatus.OK 이면 정상적인 로그인 완료되어 getBody 를 할 수 있고, 아니라면 에러 발생
