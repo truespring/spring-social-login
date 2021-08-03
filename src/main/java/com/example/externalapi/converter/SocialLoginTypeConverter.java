@@ -6,8 +6,10 @@ import org.springframework.core.convert.converter.Converter;
 
 @Configuration
 public class SocialLoginTypeConverter implements Converter<String, SocialLoginType> {
+
     @Override
     public SocialLoginType convert(String s) {
         return SocialLoginType.valueOf(s.toUpperCase());
     }
+    // TODO 무슨 역할을 하는지?
 }
