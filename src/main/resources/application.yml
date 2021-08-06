@@ -14,3 +14,5 @@ sns:
       id: d91182674422a63e8a17b6187a4a7684
     callback:
       url: http://localhost:8080/auth/kakao/callback
+    token:
+      url: https://kauth.kakao.com/oauth/token
