@@ -12,6 +12,7 @@ sns:
     url: https://kauth.kakao.com/oauth/authorize
     client:
       id: d91182674422a63e8a17b6187a4a7684
+      secret: QAtjeRymNHI8TIAEIN0MwZGTTaO2ENi8
     callback:
       url: http://localhost:8080/auth/kakao/callback
     token:
