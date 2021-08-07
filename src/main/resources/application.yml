@@ -17,3 +17,12 @@ sns:
       url: http://localhost:8080/auth/kakao/callback
     token:
       url: https://kauth.kakao.com/oauth/token
+  naver:
+    url:
+    client:
+      id: EMzJlqm5ZmbBIJNkrA8_
+      secret: huJCAysLGg
+    callback:
+      url: http://localhost:8080/auth/naver/callback
+    token:
+      url:

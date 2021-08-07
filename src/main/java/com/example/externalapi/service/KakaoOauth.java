@@ -31,7 +31,7 @@ public class KakaoOauth implements SocialOauth {
     private String KAKAO_SNS_CALLBACK_URL;
     @Value("${sns.kakao.token.url}")
     private String KAKAO_SNS_TOKEN_BASE_URL;
-    
+
     @Override
     public String getOauthRedirectURL() {
 
@@ -51,7 +51,7 @@ public class KakaoOauth implements SocialOauth {
     @Override
     public String requestAccessToken(String code) {
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
+        HttpHeaders headers = new HttpHeaders(); // TODO 알아볼 것
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
         params.set("code", code);
