@@ -1,6 +1,6 @@
-package com.example.externalapi.service;
+package com.example.externalapi.api.service;
 
-import com.example.externalapi.constants.SocialLoginType;
+import com.example.externalapi.api.constants.SocialLoginType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,14 +22,14 @@ public class OauthService {
      *
      * @param socialLoginType 소셜 로그인 타입
      */
-    public void request(SocialLoginType socialLoginType) {
+    public String request(SocialLoginType socialLoginType) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
-        String redirectURL = socialOauth.getOauthRedirectURL();
-        try {
-            response.sendRedirect(redirectURL);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //        try {
+//            response.sendRedirect(redirectURL);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        return socialOauth.getOauthRedirectURL();
     }
 
     /**

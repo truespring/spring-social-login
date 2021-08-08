@@ -1,4 +1,4 @@
-package com.example.externalapi.service;
+package com.example.externalapi.api.service;
 
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;

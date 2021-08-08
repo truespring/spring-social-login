@@ -1,6 +1,6 @@
-package com.example.externalapi.converter;
+package com.example.externalapi.api.converter;
 
-import com.example.externalapi.constants.SocialLoginType;
+import com.example.externalapi.api.constants.SocialLoginType;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 

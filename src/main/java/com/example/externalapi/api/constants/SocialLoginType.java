@@ -1,4 +1,4 @@
-package com.example.externalapi.constants;
+package com.example.externalapi.api.constants;
 
 public enum SocialLoginType {
     GOOGLE,

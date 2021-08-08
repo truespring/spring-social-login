@@ -1,6 +1,6 @@
-package com.example.externalapi.service;
+package com.example.externalapi.api.service;
 
-import com.example.externalapi.constants.SocialLoginType;
+import com.example.externalapi.api.constants.SocialLoginType;
 
 /**
  * service 역할
