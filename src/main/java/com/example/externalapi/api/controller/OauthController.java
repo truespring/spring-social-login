@@ -20,6 +20,7 @@ public class OauthController {
      * 사용자로부터 SNS 로그인 요청을 Social Login Type 을 받아 처리
      *
      * @param socialLoginType (GOOGLE, FACEBOOK, NAVER, KAKAO)
+     * @return socialLoginPage
      */
     @GetMapping(value = "/{socialLoginType}")
     public RedirectView socialLoginType(
@@ -36,7 +37,7 @@ public class OauthController {
      *
      * @param socialLoginType (GOOGLE, FACEBOOK, NAVER, KAKAO)
      * @param code            API Server 로부터 넘어노는 code
-     * @return SNS Login 요청 결과로 받은 Json 형태의 String 문자열 (access_token, refresh_token 등)
+     * @return 로그인 완료 후 화면
      */
     @GetMapping(value = "/{socialLoginType}/callback")
     public String callback(
@@ -44,7 +45,7 @@ public class OauthController {
             @RequestParam(name = "code") String code) {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         oauthService.requestAccessToken(socialLoginType, code);
-        return "login";
+        return "success";
     }
 
     @GetMapping(value = "/test")
