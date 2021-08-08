@@ -21,21 +21,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.3'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
 
     // JSON
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
     // Swagger : API 문서
-    implementation 'io.springfox:springfox-swagger2:2.9.1'
-    implementation 'io.springfox:springfox-swagger-ui:2.9.1'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
-    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
+    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.2'
 
 }
 
