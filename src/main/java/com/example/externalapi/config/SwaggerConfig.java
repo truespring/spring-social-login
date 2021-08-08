@@ -43,7 +43,7 @@ public class SwaggerConfig {
                 .globalOperationParameters(globalParamters)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.externalapi"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.externalapi.api"))
                 .paths(PathSelectors.ant("/auth/**"))
                 .build();
     }
