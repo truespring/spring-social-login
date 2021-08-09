@@ -4,13 +4,10 @@ import com.example.externalapi.api.constants.SocialLoginType;
 import com.example.externalapi.api.service.OauthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Objects;
-
-@Controller
+@RestController
 @CrossOrigin
 @RequiredArgsConstructor
 @RequestMapping(value = "/auth")

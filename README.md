@@ -15,3 +15,10 @@
 9. Map 을 만들어 필요한 키, 벨류를 담고 post 로 넘긴다.
 10. HttpStatus.OK 이면 정상적인 로그인 완료되어 getBody 를 할 수 있고, 아니라면 에러 발생
 11. 최종 화면은 getBody 의 결과 혹은 에러 메세지
+
+
+### TODO List
+
+   - JWT Token 도입
+   - SNS Login 후 Logout 추가
+   - Naver Login - NCP 에 아이디만 추가하면 됨
