@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Objects;
+
 @Controller
 @CrossOrigin
 @RequiredArgsConstructor
@@ -37,19 +39,13 @@ public class OauthController {
      *
      * @param socialLoginType (GOOGLE, FACEBOOK, NAVER, KAKAO)
      * @param code            API Server 로부터 넘어노는 code
-     * @return 로그인 완료 후 화면
+     * @return 로그인 완료 후 화면(임시)
      */
     @GetMapping(value = "/{socialLoginType}/callback")
     public String callback(
             @PathVariable(name = "socialLoginType") SocialLoginType socialLoginType,
             @RequestParam(name = "code") String code) {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
-        oauthService.requestAccessToken(socialLoginType, code);
-        return "success";
-    }
-
-    @GetMapping(value = "/test")
-    public String test(@RequestParam(name = "body") String body) {
-        return body;
+        return oauthService.requestAccessToken(socialLoginType, code);
     }
 }

@@ -21,6 +21,7 @@ public class OauthService {
      * 어떤 URL로 리다이렉트 할 것인지 판단
      *
      * @param socialLoginType 소셜 로그인 타입
+     * @return socialLoginPage
      */
     public String request(SocialLoginType socialLoginType) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
