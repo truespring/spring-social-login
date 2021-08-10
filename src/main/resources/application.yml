@@ -18,11 +18,11 @@ sns:
     token:
       url: https://kauth.kakao.com/oauth/token
   naver:
-    url:
+    url: https://nid.naver.com/oauth2.0/authorize
     client:
       id: EMzJlqm5ZmbBIJNkrA8_
       secret: huJCAysLGg
     callback:
       url: http://localhost:8080/auth/naver/callback
     token:
-      url:
+      url: https://nid.naver.com/oauth2.0/token

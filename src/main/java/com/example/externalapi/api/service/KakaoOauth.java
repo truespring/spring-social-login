@@ -66,7 +66,6 @@ public class KakaoOauth implements SocialOauth {
                 restTemplate.postForEntity(KAKAO_SNS_TOKEN_BASE_URL, restRequest, JSONObject.class);
 
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
-
             return Objects.requireNonNull(responseEntity.getBody()).toString();
         }
         return "카카오 로그인 요청 처리 실패";
