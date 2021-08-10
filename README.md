@@ -21,4 +21,4 @@
 
    - JWT Token 도입
    - SNS Login 후 Logout 추가
-   - Naver Login - NCP 에 아이디만 추가하면 됨
+   - Naver Login - NCP 에 아이디만 추가하면 됨(완료)
