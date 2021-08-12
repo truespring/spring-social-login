@@ -6,8 +6,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Confirm</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <div>성공적인 로그인!</div>
+<div id="logout-div">
+
+</div>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "/auth/success",
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+                var logout = document.createElement('div');
+                logout.innerText = data.socialLoginType + " 로그아웃";
+                logout.setAttribute('onclick', 'socialLogout(' + data.socialLoginType + ')');
+                $('#logout-div').append(logout);
+            }
+        })
+    })
+    function socialLogout(socialLoginType) {
+
+    }
+</script>
 </body>
 </html>
