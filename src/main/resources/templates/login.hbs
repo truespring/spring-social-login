@@ -8,17 +8,26 @@
     <title>Login Page</title>
 </head>
 <body>
-<div>
-    <a href="http://localhost:8080/auth/GOOGLE">구글 로그인</a>
-</div>
-<div>
-    <a href="http://localhost:8080/auth/KAKAO">카카오 로그인</a>
-</div>
-<div>
-    <a href="http://localhost:8080/auth/NAVER">네이버 로그인</a>
-</div>
-<div>
-    <a href="http://localhost:8080/auth/GITHUB">깃허브 로그인</a>
-</div>
+<div id="socialLoginDiv"></div>
+<script>
+    init();
+
+    function init() {
+        let socialLoginType = ['GOOGLE', 'KAKAO', 'NAVER', 'GITHUB'];
+        let socialLoginTypeKor = ['구글', '카카오', '네이버', '깃허브'];
+        const socialLoginDiv = document.getElementById("socialLoginDiv");
+        const createSocialLogin = () => {
+            for(let i = 0; i < socialLoginType.length; i++) {
+                const div = document.createElement('div');
+                const a = document.createElement('a');
+                a.href = 'http://localhost:8080/auth/' + socialLoginType[i];
+                a.innerText = socialLoginTypeKor[i] + ' 로그인';
+                div.append(a);
+                socialLoginDiv.append(div);
+            }
+        }
+        createSocialLogin();
+    }
+</script>
 </body>
 </html>
