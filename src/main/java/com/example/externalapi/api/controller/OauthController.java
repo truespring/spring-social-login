@@ -55,6 +55,7 @@ public class OauthController {
 
     @GetMapping(value = "/success")
     public @ResponseBody Map<String, Object> callbackPage() {
+        log.info(">> 로그인 성공페이지 요청 받음 :: {}", returnMap);
         return returnMap;
     }
 }

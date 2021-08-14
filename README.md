@@ -23,4 +23,9 @@
    - SNS Login 후 Logout 추가
    - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
    - DB 저장
-   - Facebook 대신 github 로 변경 예정
+   - Facebook 대신 github 로 변경(로그인 구현 예정)
+
+### Linux api setting
+
+   - brew install curl (curl 을 설치할 수 있음)
+   - curl -X GET http://127.0.0.1:8080/auth/GOOGLE (Rest API 요청)
