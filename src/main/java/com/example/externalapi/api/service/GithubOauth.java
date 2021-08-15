@@ -3,7 +3,7 @@ package com.example.externalapi.api.service;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FacebookOauth implements SocialOauth {
+public class GithubOauth implements SocialOauth {
     @Override
     public String getOauthRedirectURL() {
         return "";

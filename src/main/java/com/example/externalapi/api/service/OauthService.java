@@ -46,7 +46,7 @@ public class OauthService {
     }
 
     /**
-     * [GOOGLE, FACEBOOK, NAVER, KAKAO] 중 해당되는 소셜 로그인 타입인지 확인
+     * [GOOGLE, GITHUB, NAVER, KAKAO] 중 해당되는 소셜 로그인 타입인지 확인
      * type 메소드에서 클래스별 소셜을 찾아서 인자로 받은 클래스를 반환하기 위함
      *
      * @param socialLoginType 인자로 받을 소셜 로그인 타입

@@ -23,7 +23,7 @@ public class OauthController {
     /**
      * 사용자로부터 SNS 로그인 요청을 Social Login Type 을 받아 처리
      *
-     * @param socialLoginType (GOOGLE, FACEBOOK, NAVER, KAKAO)
+     * @param socialLoginType (GOOGLE, GITHUB, NAVER, KAKAO)
      * @return socialLoginPage
      */
     @GetMapping(value = "/{socialLoginType}")
@@ -39,7 +39,7 @@ public class OauthController {
     /**
      * Social Login API Server 요청에 의한 callback 을 처리
      *
-     * @param socialLoginType (GOOGLE, FACEBOOK, NAVER, KAKAO)
+     * @param socialLoginType (GOOGLE, GITHUB, NAVER, KAKAO)
      * @param code            API Server 로부터 넘어노는 code
      * @return 로그인 완료 후 화면(임시)
      */

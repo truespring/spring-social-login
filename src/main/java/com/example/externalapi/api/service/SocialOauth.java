@@ -26,8 +26,8 @@ public interface SocialOauth {
      * @return enum
      */
     default SocialLoginType type() {
-        if (this instanceof FacebookOauth) {
-            return SocialLoginType.FACEBOOK;
+        if (this instanceof GithubOauth) {
+            return SocialLoginType.GITHUB;
         } else if (this instanceof GoogleOauth) {
             return SocialLoginType.GOOGLE;
         } else if (this instanceof NaverOauth) {
