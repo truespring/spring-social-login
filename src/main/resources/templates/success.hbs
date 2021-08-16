@@ -17,10 +17,10 @@
             url: "/auth/success",
             type: 'GET',
             success: function (data) {
+                console.log(data);
                 const msg = $('#login-result');
                 socialLoginType = data.socialLoginType;
                 msg.text(socialLoginType + ' 로그인 성공!');
-                const logout = document.createElement('button');
             }
         });
     });

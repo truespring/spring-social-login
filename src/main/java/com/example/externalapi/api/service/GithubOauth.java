@@ -35,8 +35,6 @@ public class GithubOauth implements SocialOauth {
 
         Map<String, Object> params = new HashMap<>();
         params.put("client_id", GITHUB_SNS_CLIENT_ID);
-//        params.put("redirect_uri", GITHUB_SNS_CALLBACK_URL);
-//        params.put("response_type", "code");
         params.put("scope", "user:email");
 
         String parameterString = params.entrySet().stream()
@@ -49,7 +47,7 @@ public class GithubOauth implements SocialOauth {
     @Override
     public String requestAccessToken(String code) {
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders(); // TODO 알아볼 것
+        HttpHeaders headers = new HttpHeaders();
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
         params.set("code", code);
@@ -66,6 +64,6 @@ public class GithubOauth implements SocialOauth {
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             return Objects.requireNonNull(responseEntity.getBody()).toString();
         }
-        return "카카오 로그인 요청 처리 실패";
+        return "깃허브 로그인 요청 처리 실패";
     }
 }

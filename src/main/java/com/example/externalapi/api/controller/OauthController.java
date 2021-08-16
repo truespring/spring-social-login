@@ -40,7 +40,7 @@ public class OauthController {
      * Social Login API Server 요청에 의한 callback 을 처리
      *
      * @param socialLoginType (GOOGLE, GITHUB, NAVER, KAKAO)
-     * @param code            API Server 로부터 넘어노는 code
+     * @param code            API Server 로부터 넘어오는 code
      * @return 로그인 완료 후 화면(임시)
      */
     @GetMapping(value = "/{socialLoginType}/callback")
