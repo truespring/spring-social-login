@@ -19,11 +19,11 @@
 
 ### TODO List
 
-   - JWT Token 도입
-   - SNS Login 후 Logout 추가
+   - Spring Security 적용
+   - SNS Login 후 Logout 추가(취소)
    - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
    - DB 저장
-   - Facebook 대신 github 로 변경(로그인 구현 예정)
+   - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
 
 ### Linux api setting
 
