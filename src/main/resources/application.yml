@@ -27,11 +27,11 @@ sns:
     token:
       url: https://nid.naver.com/oauth2.0/token
   github:
-    url : https://api.github.com
+    url : https://github.com/login/oauth/authorize
     client :
       id: e2c22869736762e5d8c2
       secret: 2a419fc8ed21f88ecbd0dedde70a1f56741adabf
     callback:
       url: http://localhost:8080/auth/github/callback
     token:
-      url:
+      url: https://github.com/login/oauth/access_token
