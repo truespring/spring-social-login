@@ -1,3 +1,34 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://3.37.244.96:5432/kotlindb
+    username: master_user_01
+    password: master
+    #Connection Pool
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      # 운영 시
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    #실행 시 warning 제거
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual: true
+
 sns:
   google:
     url: https://accounts.google.com/o/oauth2/v2/auth
