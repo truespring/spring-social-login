@@ -10,10 +10,9 @@
 </head>
 <body>
 <div id="login-result"></div>
-<div id="logout-div"></div>
 <script>
     let socialLoginType = undefined;
-    $(document).ready(function() {
+    $(document).ready(function () {
         $.ajax({
             url: "/auth/success",
             type: 'GET',
@@ -22,16 +21,8 @@
                 socialLoginType = data.socialLoginType;
                 msg.text(socialLoginType + ' 로그인 성공!');
                 const logout = document.createElement('button');
-                logout.innerText = socialLoginType + " 로그아웃";
-                logout.setAttribute('onclick', 'socialLogout("' + socialLoginType + '")');
-                $(`#logout-div`).append(logout);
             }
         });
-
-        function socialLogout(socialLoginType) {
-            console.log('함수 확인 : ' + socialLoginType);
-            // 로그아웃 함수 추가
-        }
     });
 
 </script>
