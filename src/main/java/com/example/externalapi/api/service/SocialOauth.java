@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
  * service 역할
  */
 public interface SocialOauth {
+
     /**
      * 각 Social Login 페이지로 Redirect 처리할 URL Build
      * 사용자로부터 로그인 요청을 받아 Social Login Server 인증용 code 요청
@@ -24,13 +25,12 @@ public interface SocialOauth {
 
     /**
      * accessToken 을 통해 로그인한 사용자의 정보를 요청
-     * @param accessToken API server 로 부터 제공받은 토큰
-     * @return 사용자 정보를 담은 JSONObject
      */
     String requestUserInfo(String accessToken);
 
     /**
-     * interface에서 메소드를 구현하는 방법 - default
+     * interface 에서 메소드를 구현하는 방법 - default
+     * 해당되는 소셜 타입을 반환
      *
      * @return enum
      */

@@ -30,6 +30,7 @@ spring:
             non_contextual: true
 
 sns:
+  # Google
   google:
     url: https://accounts.google.com/o/oauth2/v2/auth
     client:
@@ -39,6 +40,7 @@ sns:
       url: http://localhost:8080/auth/google/callback
     token:
       url: https://oauth2.googleapis.com/token
+  # Kakao
   kakao:
     url: https://kauth.kakao.com/oauth/authorize
     client:
@@ -50,6 +52,7 @@ sns:
       url: https://kauth.kakao.com/oauth/token
     user:
       url: https://kapi.kakao.com/v2/user/me
+  # Naver
   naver:
     url: https://nid.naver.com/oauth2.0/authorize
     client:
@@ -59,6 +62,7 @@ sns:
       url: http://localhost:8080/auth/naver/callback
     token:
       url: https://nid.naver.com/oauth2.0/token
+  # Github
   github:
     url : https://github.com/login/oauth/authorize
     client :

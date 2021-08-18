@@ -49,16 +49,16 @@ public class OauthController {
             @PathVariable(name = "socialLoginType") SocialLoginType socialLoginType,
             @RequestParam(name = "code") String code) {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
-        Object accessTokenObj = oauthService.requestAccessToken(socialLoginType, code);
-        String accessTokenStr = accessTokenObj.toString();
+        String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
         oauthService.requestUserInfo(socialLoginType, accessTokenStr);
-        returnMap.put("accessToken", accessTokenObj);
+        returnMap.put("accessToken", accessTokenStr);
         returnMap.put("socialLoginType", socialLoginType);
         return "success";
     }
 
     @GetMapping(value = "/success")
-    public @ResponseBody Map<String, Object> callbackPage() {
+    public @ResponseBody
+    Map<String, Object> callbackPage() {
         log.info(">> 로그인 성공페이지 요청 받음 :: {}", returnMap);
         return returnMap;
     }

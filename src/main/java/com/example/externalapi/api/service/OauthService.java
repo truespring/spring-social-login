@@ -31,16 +31,22 @@ public class OauthService {
         return socialOauth.getOauthRedirectURL();
     }
 
+    /**
+     * 발급 받은 accessToken 을 다시 api 로 보내어 사용자 정보를 받음
+     *
+     * @param socialLoginType 소셜 로그인 타입
+     * @param accessToken     소셜 토큰
+     */
     public void requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
-        socialOauth.requestUserInfo(accessToken);
+        String userEmail = socialOauth.requestUserInfo(accessToken);
     }
 
     /**
      * accessToken 발급을 위한 요청
      *
      * @param socialLoginType 소셜 로그인 타입
-     * @param code api 의 코드
+     * @param code            api 의 코드
      * @return accessToken 요청
      */
     public String requestAccessToken(SocialLoginType socialLoginType, String code) {

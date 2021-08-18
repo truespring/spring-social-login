@@ -40,6 +40,7 @@ public class KakaoOauth implements SocialOauth {
     @Override
     public String getOauthRedirectURL() {
 
+        // 카카오 요청 파라미터
         Map<String, Object> params = new HashMap<>();
         params.put("client_id", KAKAO_SNS_CLIENT_ID);
         params.put("redirect_uri", KAKAO_SNS_CALLBACK_URL);
@@ -56,8 +57,9 @@ public class KakaoOauth implements SocialOauth {
     @Override
     public String requestAccessToken(String code) {
         RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders(); // TODO 알아볼 것
+        HttpHeaders headers = new HttpHeaders();
 
+        // 토큰 발급을 위한 요청 파라미터
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
         params.set("code", code);
         params.set("client_id", KAKAO_SNS_CLIENT_ID);
@@ -82,9 +84,8 @@ public class KakaoOauth implements SocialOauth {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
-        JSONParser parser = new JSONParser();
         try {
-            JSONObject dataJson = (JSONObject) parser.parse(accessTokenStr);
+            JSONObject dataJson = (JSONObject) new JSONParser().parse(accessTokenStr);
             accessToken = dataJson.get("access_token").toString();
         } catch (ParseException | ClassCastException | NullPointerException e) {
             e.printStackTrace();
@@ -92,18 +93,19 @@ public class KakaoOauth implements SocialOauth {
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
 
-        headers.set("Authorization", "Bearer " + accessToken);
+        headers.set("Authorization", "Bearer " + accessToken); // header 에 값 담는 방법
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
 
         ResponseEntity<JSONObject> responseEntity =
                 restTemplate.postForEntity(KAKAO_SNS_USER_URL, restRequest, JSONObject.class);
 
-        if (responseEntity.getStatusCode() == HttpStatus.OK) {
-            JSONObject returnJSONObj = responseEntity.getBody();
-            LinkedHashMap<String, Object> kakaoAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("kakao_account");
-            String email = (String) kakaoAccount.get("email");
-            return Objects.requireNonNull(responseEntity.getBody()).toString();
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+            return "카카오 로그인 요청 처리 실패";
         }
-        return "카카오 로그인 요청 처리 실패";
+
+        JSONObject returnJSONObj = responseEntity.getBody();
+        JSONObject kakaoAccount = (JSONObject) returnJSONObj.get("kakao_account");
+        String email = kakaoAccount.get("email").toString();
+        return Objects.requireNonNull(responseEntity.getBody()).toString();
     }
 }
