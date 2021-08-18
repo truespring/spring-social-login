@@ -74,6 +74,11 @@ public class GoogleOauth implements SocialOauth {
         return "구글 로그인 요청 처리 실패";
     }
 
+    @Override
+    public String requestUserInfo(String accessToken) {
+        return null;
+    }
+
     /**
      * java 표준 URL 통신 방식
      *

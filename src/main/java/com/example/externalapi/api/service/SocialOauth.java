@@ -1,6 +1,8 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
+import org.json.simple.JSONObject;
+import org.springframework.http.ResponseEntity;
 
 /**
  * service 역할
@@ -13,12 +15,19 @@ public interface SocialOauth {
     String getOauthRedirectURL();
 
     /**
-     * API Server로부터 받은 code를 활용하여 사용자 인증 정보 요청
+     * API Server 로부터 받은 code 를 활용하여 사용자 인증 정보 요청
      *
      * @param code API Server 에서 받아온 code
      * @return API 서버로 부터 응답받은 Json 형태의 결과를 string 으로 반환
      */
     String requestAccessToken(String code);
+
+    /**
+     * accessToken 을 통해 로그인한 사용자의 정보를 요청
+     * @param accessToken API server 로 부터 제공받은 토큰
+     * @return 사용자 정보를 담은 JSONObject
+     */
+    String requestUserInfo(String accessToken);
 
     /**
      * interface에서 메소드를 구현하는 방법 - default

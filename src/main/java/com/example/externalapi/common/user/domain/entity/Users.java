@@ -1,5 +1,6 @@
 package com.example.externalapi.common.user.domain.entity;
 
+import com.example.externalapi.api.constants.SocialLoginType;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,5 +26,5 @@ public class Users {
 
     // google, kakao, naver, github
     @Column(name = "user_social_type")
-    private String userSocialType;
+    private SocialLoginType socialLoginType;
 }

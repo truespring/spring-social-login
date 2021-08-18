@@ -2,6 +2,8 @@ package com.example.externalapi.api.service;
 
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +15,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -31,6 +34,8 @@ public class KakaoOauth implements SocialOauth {
     private String KAKAO_SNS_CALLBACK_URL;
     @Value("${sns.kakao.token.url}")
     private String KAKAO_SNS_TOKEN_BASE_URL;
+    @Value("${sns.kakao.user.url}")
+    private String KAKAO_SNS_USER_URL;
 
     @Override
     public String getOauthRedirectURL() {
@@ -66,6 +71,37 @@ public class KakaoOauth implements SocialOauth {
                 restTemplate.postForEntity(KAKAO_SNS_TOKEN_BASE_URL, restRequest, JSONObject.class);
 
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            return Objects.requireNonNull(responseEntity.getBody()).toString();
+        }
+        return "카카오 로그인 요청 처리 실패";
+    }
+
+    @Override
+    public String requestUserInfo(String accessTokenStr) {
+        String accessToken = null;
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        JSONParser parser = new JSONParser();
+        try {
+            JSONObject dataJson = (JSONObject) parser.parse(accessTokenStr);
+            accessToken = dataJson.get("access_token").toString();
+        } catch (ParseException | ClassCastException | NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+
+        headers.set("Authorization", "Bearer " + accessToken);
+        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
+
+        ResponseEntity<JSONObject> responseEntity =
+                restTemplate.postForEntity(KAKAO_SNS_USER_URL, restRequest, JSONObject.class);
+
+        if (responseEntity.getStatusCode() == HttpStatus.OK) {
+            JSONObject returnJSONObj = responseEntity.getBody();
+            LinkedHashMap<String, Object> kakaoAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("kakao_account");
+            String email = (String) kakaoAccount.get("email");
             return Objects.requireNonNull(responseEntity.getBody()).toString();
         }
         return "카카오 로그인 요청 처리 실패";

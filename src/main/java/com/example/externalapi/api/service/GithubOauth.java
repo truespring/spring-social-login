@@ -66,4 +66,9 @@ public class GithubOauth implements SocialOauth {
         }
         return "깃허브 로그인 요청 처리 실패";
     }
+
+    @Override
+    public String requestUserInfo(String accessToken) {
+        return null;
+    }
 }

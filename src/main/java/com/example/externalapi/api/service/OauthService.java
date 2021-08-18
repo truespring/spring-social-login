@@ -4,8 +4,6 @@ import com.example.externalapi.api.constants.SocialLoginType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -15,10 +13,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OauthService {
     private final List<SocialOauth> socialOauthList; // implements 하는 클래스를 리스트로 만드는 것
-    private final HttpServletResponse response;
+//    private final HttpServletResponse response;
 
     /**
-     * 어떤 URL로 리다이렉트 할 것인지 판단
+     * 어떤 URL 로 리다이렉트 할 것인지 판단
      *
      * @param socialLoginType 소셜 로그인 타입
      * @return socialLoginPage
@@ -33,11 +31,16 @@ public class OauthService {
         return socialOauth.getOauthRedirectURL();
     }
 
+    public void requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
+        SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
+        socialOauth.requestUserInfo(accessToken);
+    }
+
     /**
      * accessToken 발급을 위한 요청
      *
      * @param socialLoginType 소셜 로그인 타입
-     * @param code api의 코드
+     * @param code api 의 코드
      * @return accessToken 요청
      */
     public String requestAccessToken(SocialLoginType socialLoginType, String code) {

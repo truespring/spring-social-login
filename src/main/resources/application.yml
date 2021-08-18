@@ -48,6 +48,8 @@ sns:
       url: http://localhost:8080/auth/kakao/callback
     token:
       url: https://kauth.kakao.com/oauth/token
+    user:
+      url: https://kapi.kakao.com/v2/user/me
   naver:
     url: https://nid.naver.com/oauth2.0/authorize
     client:
