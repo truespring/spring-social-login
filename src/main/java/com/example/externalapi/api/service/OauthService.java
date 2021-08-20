@@ -39,7 +39,7 @@ public class OauthService {
      */
     public void requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
-        String userEmail = socialOauth.requestUserInfo(accessToken);
+        socialOauth.requestUserInfo(accessToken);
     }
 
     /**

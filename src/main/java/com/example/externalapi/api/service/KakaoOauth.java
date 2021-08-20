@@ -105,7 +105,6 @@ public class KakaoOauth implements SocialOauth {
 
         JSONObject returnJSONObj = responseEntity.getBody();
         JSONObject kakaoAccount = (JSONObject) returnJSONObj.get("kakao_account");
-        String email = kakaoAccount.get("email").toString();
-        return Objects.requireNonNull(responseEntity.getBody()).toString();
+        return kakaoAccount.get("email").toString();
     }
 }
