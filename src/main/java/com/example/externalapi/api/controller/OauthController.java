@@ -50,9 +50,10 @@ public class OauthController {
             @RequestParam(name = "code") String code) {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
-        oauthService.requestUserInfo(socialLoginType, accessTokenStr);
+        String userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);
         returnMap.put("accessToken", accessTokenStr);
         returnMap.put("socialLoginType", socialLoginType);
+        returnMap.put("userInfo", userInfo);
         return "success";
     }
 

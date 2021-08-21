@@ -18,15 +18,19 @@ public class UsersServiceImpl implements UsersService {
     public String getUserInfo(String userEmail, SocialLoginType socialLoginType) {
         Optional<Users> userInfo = usersRepository.findAllByUserEmail(userEmail);
         if (userInfo.isEmpty()) {
-            // TODO 따로 분리 예정
-            usersRepository.save(Users.builder()
-                    .userEmail(userEmail)
-                    .userPw(userEmail + socialLoginType) // TODO 두 가지를 조합하여 암호화 예정
-                    .socialLoginType(socialLoginType)
-                    .build());
+            signUpUser(userEmail, socialLoginType);
             return "회원가입";
         }
         // 로그인 승인
         return "로그인";
+    }
+
+    @Override
+    public Users signUpUser(String userEmail, SocialLoginType socialLoginType) {
+        return usersRepository.save(Users.builder()
+                .userEmail(userEmail)
+                .userPw(userEmail + socialLoginType) // TODO 두 가지를 조합하여 암호화 예정
+                .socialLoginType(socialLoginType)
+                .build());
     }
 }

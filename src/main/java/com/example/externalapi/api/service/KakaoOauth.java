@@ -104,7 +104,7 @@ public class KakaoOauth implements SocialOauth {
         }
 
         JSONObject returnJSONObj = responseEntity.getBody();
-        JSONObject kakaoAccount = (JSONObject) returnJSONObj.get("kakao_account");
+        LinkedHashMap<String, Object> kakaoAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("kakao_account"); // TODO 형변환에 관한 고찰이 필요함
         return kakaoAccount.get("email").toString();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
+import com.example.externalapi.common.user.service.UsersServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OauthService {
     private final List<SocialOauth> socialOauthList; // implements 하는 클래스를 리스트로 만드는 것
+    private final UsersServiceImpl usersServiceImpl;
 //    private final HttpServletResponse response;
 
     /**
@@ -36,10 +38,12 @@ public class OauthService {
      *
      * @param socialLoginType 소셜 로그인 타입
      * @param accessToken     소셜 토큰
+     * @return 로그인 / 회원가입
      */
-    public void requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
+    public String requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
-        socialOauth.requestUserInfo(accessToken);
+        String userEmail = socialOauth.requestUserInfo(accessToken);
+        return usersServiceImpl.getUserInfo(userEmail, socialLoginType);
     }
 
     /**
