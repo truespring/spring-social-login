@@ -1,8 +1,8 @@
-package com.example.externalapi.common.user.service;
+package com.example.externalapi.app.user.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
-import com.example.externalapi.common.user.domain.entity.Users;
-import com.example.externalapi.common.user.domain.repository.UsersRepository;
+import com.example.externalapi.app.user.domain.entity.Users;
+import com.example.externalapi.app.user.domain.repository.UsersRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +15,14 @@ public class UsersServiceImpl implements UsersService {
     private final UsersRepository usersRepository;
 
     @Override
-    public String getUserInfo(String userEmail, SocialLoginType socialLoginType) {
-        Optional<Users> userInfo = usersRepository.findAllByUserEmail(userEmail);
+    public Users getUserInfo(String userEmail, SocialLoginType socialLoginType) {
+        Optional<Users> userInfo = usersRepository.findByUserEmail(userEmail);
         if (userInfo.isEmpty()) {
-            signUpUser(userEmail, socialLoginType);
-            return "회원가입";
+            // 회원가입
+            return signUpUser(userEmail, socialLoginType);
         }
         // 로그인 승인
-        return "로그인";
+        return userInfo.get();
     }
 
     @Override

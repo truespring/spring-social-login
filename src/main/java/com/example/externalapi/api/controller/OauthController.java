@@ -2,9 +2,9 @@ package com.example.externalapi.api.controller;
 
 import com.example.externalapi.api.constants.SocialLoginType;
 import com.example.externalapi.api.service.OauthService;
+import com.example.externalapi.app.user.domain.entity.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
@@ -50,7 +50,7 @@ public class OauthController {
             @RequestParam(name = "code") String code) {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
-        String userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);
+        Users userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);
         returnMap.put("accessToken", accessTokenStr);
         returnMap.put("socialLoginType", socialLoginType);
         returnMap.put("userInfo", userInfo);

@@ -1,4 +1,4 @@
-package com.example.externalapi.common.user.domain.entity;
+package com.example.externalapi.app.user.domain.entity;
 
 import com.example.externalapi.api.constants.SocialLoginType;
 import lombok.*;
@@ -26,5 +26,6 @@ public class Users {
 
     // google, kakao, naver, github
     @Column(name = "user_social_type")
+    @Enumerated(EnumType.STRING)
     private SocialLoginType socialLoginType;
 }

@@ -1,7 +1,8 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
-import com.example.externalapi.common.user.service.UsersServiceImpl;
+import com.example.externalapi.app.user.domain.entity.Users;
+import com.example.externalapi.app.user.service.UsersServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,7 @@ public class OauthService {
      * @param accessToken     소셜 토큰
      * @return 로그인 / 회원가입
      */
-    public String requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
+    public Users requestUserInfo(SocialLoginType socialLoginType, String accessToken) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
         String userEmail = socialOauth.requestUserInfo(accessToken);
         return usersServiceImpl.getUserInfo(userEmail, socialLoginType);
