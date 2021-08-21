@@ -19,7 +19,7 @@
 
 ### TODO List
 
-   - Spring Security 적용(blog : https://mangkyu.tistory.com/76)
+   - Spring Security 적용(blog : https://mangkyu.tistory.com/76) -> 따로 공부 후 적용
    - SNS Login 후 Logout 추가(취소)
    - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
    - DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민)
