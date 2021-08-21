@@ -1,7 +1,7 @@
 spring:
   config:
     activate:
-      on-profile:
+      on-profile: local
   datasource:
     url: jdbc:postgresql://3.37.244.96:5432/kotlindb
     username: master_user_01
