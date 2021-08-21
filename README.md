@@ -24,6 +24,7 @@
    - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
    - DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민)
    - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
+   - aws route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 
 ### Linux api setting
 
