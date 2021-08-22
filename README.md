@@ -25,6 +25,7 @@
    - DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민)
    - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
    - aws route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
+   - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정
 
 ### Linux api setting
 
