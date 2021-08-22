@@ -3,6 +3,7 @@ package com.example.externalapi.api.service;
 import com.example.externalapi.api.constants.SocialLoginType;
 import com.example.externalapi.app.user.domain.entity.Users;
 import com.example.externalapi.app.user.service.UsersServiceImpl;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +55,7 @@ public class OauthService {
      * @param code            api 의 코드
      * @return accessToken 요청
      */
-    public String requestAccessToken(SocialLoginType socialLoginType, String code) {
+    public String requestAccessToken(SocialLoginType socialLoginType, String code) throws JsonProcessingException {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
         return socialOauth.requestAccessToken(code);
     }

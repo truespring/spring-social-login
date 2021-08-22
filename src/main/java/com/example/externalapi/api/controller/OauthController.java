@@ -3,6 +3,7 @@ package com.example.externalapi.api.controller;
 import com.example.externalapi.api.constants.SocialLoginType;
 import com.example.externalapi.api.service.OauthService;
 import com.example.externalapi.app.user.domain.entity.Users;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class OauthController {
     @GetMapping(value = "/{socialLoginType}/callback")
     public String callback(
             @PathVariable(name = "socialLoginType") SocialLoginType socialLoginType,
-            @RequestParam(name = "code") String code) {
+            @RequestParam(name = "code") String code) throws JsonProcessingException {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
         Users userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);

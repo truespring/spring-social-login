@@ -1,6 +1,7 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.simple.JSONObject;
 import org.springframework.http.ResponseEntity;
 
@@ -21,7 +22,7 @@ public interface SocialOauth {
      * @param code API Server 에서 받아온 code
      * @return API 서버로 부터 응답받은 Json 형태의 결과를 string 으로 반환
      */
-    String requestAccessToken(String code);
+    String requestAccessToken(String code) throws JsonProcessingException;
 
     /**
      * accessToken 을 통해 로그인한 사용자의 정보를 요청
