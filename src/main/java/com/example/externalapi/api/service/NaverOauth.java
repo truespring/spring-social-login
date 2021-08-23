@@ -1,17 +1,17 @@
 package com.example.externalapi.api.service;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -29,6 +29,8 @@ public class NaverOauth implements SocialOauth {
     private String NAVER_SNS_CALLBACK_URL;
     @Value("${sns.naver.token.url}")
     private String NAVER_SNS_TOKEN_BASE_URL;
+    @Value("${sns.naver.user.url}")
+    private String NAVER_SNS_USER_URL;
 
     @Override
     public String getOauthRedirectURL() {
@@ -70,7 +72,34 @@ public class NaverOauth implements SocialOauth {
     }
 
     @Override
-    public String requestUserInfo(String accessToken) {
-        return null;
+    public String requestUserInfo(String accessTokenStr) {
+
+        String accessToken = null;
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        try {
+            JSONObject dataJson = (JSONObject) new JSONParser().parse(accessTokenStr);
+            accessToken = dataJson.get("access_token").toString();
+        } catch (ParseException | ClassCastException | NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+
+        headers.set("Authorization", "Bearer " + accessToken);
+        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
+
+        ResponseEntity<JSONObject> responseEntity =
+                restTemplate.postForEntity(NAVER_SNS_USER_URL, restRequest, JSONObject.class);
+
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+            return "네이버 로그인 요청 처리 실패";
+        }
+        JSONObject returnJSONObj = responseEntity.getBody();
+        LinkedHashMap<String, Object> naverAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("response"); // TODO 형변환에 관한 고찰이 필요함
+        String getAccount = returnJSONObj.get("response").toString();
+
+        return naverAccount.get("email").toString();
     }
 }
