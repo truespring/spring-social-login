@@ -31,3 +31,16 @@
 
    - brew install curl (curl 을 설치할 수 있음)
    - curl -X GET http://127.0.0.1:8080/auth/GOOGLE (Rest API 요청)
+
+
+### api
+
+   - localhost:8080/login
+      1. google -> localhost:8080/auth/GOOGlE
+      2. kakao -> localhost:8080/auth/KAKAO
+      3. naver -> localhost:8080/auth/NAVER
+      4. github -> localhost:8080/auth/GITHUB
+
+
+### swagger
+   - localhost:8080/swagger-ui.html
