@@ -56,7 +56,7 @@ public class KakaoOauth implements SocialOauth {
 
     @Override
     public String requestAccessToken(String code) {
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         // 토큰 발급을 위한 요청 파라미터
@@ -81,7 +81,7 @@ public class KakaoOauth implements SocialOauth {
     @Override
     public String requestUserInfo(String accessTokenStr) {
         String accessToken = null;
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         try {
@@ -105,6 +105,10 @@ public class KakaoOauth implements SocialOauth {
 
         JSONObject returnJSONObj = responseEntity.getBody();
         LinkedHashMap<String, Object> kakaoAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("kakao_account"); // TODO 형변환에 관한 고찰이 필요함
+        String getAccount = returnJSONObj.get("kakao_account").toString();
+
+//        JSONObject dataJson = (JSONObject) new JSONParser().parse(getAccount);
+//        accessToken = dataJson.get("access_token").toString();
         return kakaoAccount.get("email").toString();
     }
 }

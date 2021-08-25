@@ -64,7 +64,7 @@ public class GoogleOauth implements SocialOauth {
      */
     @Override
     public String requestAccessToken(String code) throws JsonProcessingException {
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
 
         GoogleOauthRequest googleOAuthRequestParam = GoogleOauthRequest
                 .builder()

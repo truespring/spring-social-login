@@ -50,7 +50,7 @@ public class NaverOauth implements SocialOauth {
 
     @Override
     public String requestAccessToken(String code) {
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
@@ -75,7 +75,7 @@ public class NaverOauth implements SocialOauth {
     public String requestUserInfo(String accessTokenStr) {
 
         String accessToken = null;
-        RestTemplate restTemplate = new RestTemplate();
+        var restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         try {
