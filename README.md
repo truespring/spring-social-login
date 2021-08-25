@@ -34,7 +34,7 @@
 ### request api
 
 - localhost:8080/login
-    1. google -> localhost:8080/auth/GOOGlE
+    1. google -> localhost:8080/auth/GOOGLE
     2. kakao -> localhost:8080/auth/KAKAO
     3. naver -> localhost:8080/auth/NAVER
     4. github -> localhost:8080/auth/GITHUB
