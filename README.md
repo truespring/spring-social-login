@@ -24,7 +24,7 @@
 - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
 - aws route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능)
-- domain name 획득 예정(aws route 53과 연동)
+- domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
 
 ### Linux api setting
 
@@ -42,3 +42,8 @@
 ### swagger
 
 - localhost:8080/swagger-ui.html
+
+### 느낀점
+
+- 해당 프로젝트를 진행하며 구조에 대해 더 신경을 써야겠다고 느낌
+- REST API 에 대해 더 신경을 써야겠음 
