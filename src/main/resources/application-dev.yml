@@ -29,6 +29,10 @@ spring:
           lob:
             non_contextual: true
 
+# 서버 설정
+server:
+  port: 80
+
 sns:
   # Google
   google:
