@@ -26,6 +26,12 @@
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능)
 - domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
 
+### 해결해야할 사항
+
+- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중
+- github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄
+- 무료 도메인을 얻어야 함 -> freenom 이란 사이트에서 무료 도메인을 얻을 수 있으나 현재 not available 인 상황
+
 ### Linux api setting
 
 - brew install curl (curl 을 설치할 수 있음)
