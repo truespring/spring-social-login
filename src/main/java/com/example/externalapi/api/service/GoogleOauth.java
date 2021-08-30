@@ -8,6 +8,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class GoogleOauth implements SocialOauth {
 
     @Value("${sns.google.url}")
@@ -39,12 +42,14 @@ public class GoogleOauth implements SocialOauth {
     private String GOOGLE_SNS_CALLBACK_URL;
     @Value("${sns.google.token.url}")
     private String GOOGLE_SNS_TOKEN_BASE_URL;
+    @Value("${sns.google.user.url}")
+    private String GOOGLE_SNS_USER_URL;
 
     @Override
     public String getOauthRedirectURL() {
 
         Map<String, Object> params = new HashMap<>();
-        params.put("scope", "profile");
+        params.put("scope", "email%20profile%20openid");
         params.put("response_type", "code");
         params.put("client_id", GOOGLE_SNS_CLIENT_ID);
         params.put("redirect_uri", GOOGLE_SNS_CALLBACK_URL);
@@ -90,21 +95,28 @@ public class GoogleOauth implements SocialOauth {
             });
 
             // ID Token 만 추출 (사용자의 정보는 jwt 로 인코딩 되어있다)
-            String jwtToken = result.getIdToken();
-            String requestUrl = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com/tokeninfo")
-                    .queryParam("id_token", jwtToken).encode().toUriString(); // TODO 분석이 필요한 부분
-
-            String resultJson = restTemplate.getForObject(requestUrl, String.class);
-
-            Map<String,String> userInfo = mapper.readValue(resultJson, new TypeReference<>(){});
-            return result.getAccessToken();
+            return result.getIdToken();
         }
         return "구글 로그인 요청 처리 실패";
     }
 
+    @SneakyThrows
     @Override
-    public String requestUserInfo(String accessToken) {
-        return null;
+    public String requestUserInfo(String accessTokenStr) {
+        var restTemplate = new RestTemplate();
+        String requestUrl = UriComponentsBuilder.fromHttpUrl(GOOGLE_SNS_USER_URL)
+                .queryParam("id_token", accessTokenStr).encode().toUriString(); // TODO 분석이 필요한 부분
+
+        String resultJson = restTemplate.getForObject(requestUrl, String.class);
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        Map<String, String> userInfo = mapper.readValue(resultJson, new TypeReference<>() {
+        });
+
+        return userInfo.get("email");
     }
 
     /**

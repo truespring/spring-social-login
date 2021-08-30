@@ -40,6 +40,8 @@ sns:
       url: http://localhost:8080/auth/google/callback
     token:
       url: https://oauth2.googleapis.com/token
+    user:
+      url: https://oauth2.googleapis.com/tokeninfo
   # Kakao
   kakao:
     url: https://kauth.kakao.com/oauth/authorize
