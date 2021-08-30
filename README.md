@@ -28,7 +28,7 @@
 
 ### 해결해야할 사항
 
-- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중
+- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (https://nect2r.tistory.com/9)
 - github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄
 - 무료 도메인을 얻어야 함 -> freenom 이란 사이트에서 무료 도메인을 얻을 수 있으나 현재 not available 인 상황
 
