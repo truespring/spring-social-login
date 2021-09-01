@@ -1,5 +1,7 @@
 package com.example.externalapi.api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -72,14 +74,15 @@ public class NaverOauth implements SocialOauth {
     }
 
     @Override
-    public String requestUserInfo(String accessTokenStr) {
+    public String requestUserInfo(String accessTokenStr) throws JsonProcessingException {
 
         String accessToken = null;
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
+        ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JSONObject dataJson = (JSONObject) new JSONParser().parse(accessTokenStr);
+            JSONObject dataJson = mapper.readValue(new JSONParser().parse(accessTokenStr).toString(), JSONObject.class);
             accessToken = dataJson.get("access_token").toString();
         } catch (ParseException | ClassCastException | NullPointerException e) {
             e.printStackTrace();
@@ -98,7 +101,6 @@ public class NaverOauth implements SocialOauth {
         }
         JSONObject returnJSONObj = responseEntity.getBody();
         LinkedHashMap<String, Object> naverAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("response"); // TODO 형변환에 관한 고찰이 필요함
-        String getAccount = returnJSONObj.get("response").toString();
 
         return naverAccount.get("email").toString();
     }

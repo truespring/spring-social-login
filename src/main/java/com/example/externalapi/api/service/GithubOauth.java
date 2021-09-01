@@ -75,18 +75,18 @@ public class GithubOauth implements SocialOauth {
 
     @Override
     public String requestUserInfo(String accessTokenStr) throws JsonProcessingException {
+
         String accessToken = null;
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         ObjectMapper mapper = new ObjectMapper();
+
         try {
             JSONObject dataJson = mapper.readValue(new JSONParser().parse(accessTokenStr).toString(), JSONObject.class);
             accessToken = dataJson.get("access_token").toString();
         } catch (ParseException | ClassCastException | NullPointerException e) {
             e.printStackTrace();
         }
-
-        log.info(">> access token :: {}", accessToken);
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
 
@@ -98,7 +98,8 @@ public class GithubOauth implements SocialOauth {
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) return "깃허브 로그인 요청 처리 실패";
 
-        List<GithubOauthResponse> list = mapper.readValue(responseEntity.getBody(), new TypeReference<>() {});
+        List<GithubOauthResponse> list = mapper.readValue(responseEntity.getBody(), new TypeReference<>() {
+        });
 
         return list.stream().filter(GithubOauthResponse::getPrimary).map(GithubOauthResponse::getEmail).findFirst()
                 .orElse("");
