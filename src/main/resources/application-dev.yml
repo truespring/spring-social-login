@@ -1,0 +1,78 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:postgresql://3.37.244.96:5432/kotlindb
+    username: master_user_01
+    password: master
+    #Connection Pool
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+  jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: true
+    generate-ddl: false
+    open-in-view: false
+    hibernate:
+      # 운영 시
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    #실행 시 warning 제거
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual: true
+
+# 서버 설정
+server:
+  port: 80
+
+sns:
+  # Google
+  google:
+    url: https://accounts.google.com/o/oauth2/v2/auth
+    client:
+      id: 1006273998372-i8khfgn2oi2626i3jsnsen4dhv8v5r3t.apps.googleusercontent.com
+      secret: riMzLiD2fb7UOZVrgmaX-Nud
+    callback:
+      url: http://localhost:8080/auth/google/callback
+    token:
+      url: https://oauth2.googleapis.com/token
+  # Kakao
+  kakao:
+    url: https://kauth.kakao.com/oauth/authorize
+    client:
+      id: d91182674422a63e8a17b6187a4a7684
+      secret: QAtjeRymNHI8TIAEIN0MwZGTTaO2ENi8
+    callback:
+      url: http://localhost:8080/auth/kakao/callback
+    token:
+      url: https://kauth.kakao.com/oauth/token
+    user:
+      url: https://kapi.kakao.com/v2/user/me
+  # Naver
+  naver:
+    url: https://nid.naver.com/oauth2.0/authorize
+    client:
+      id: EMzJlqm5ZmbBIJNkrA8_
+      secret: huJCAysLGg
+    callback:
+      url: http://localhost:8080/auth/naver/callback
+    token:
+      url: https://nid.naver.com/oauth2.0/token
+  # Github
+  github:
+    url : https://github.com/login/oauth/authorize
+    client :
+      id: e2c22869736762e5d8c2
+      secret: 2a419fc8ed21f88ecbd0dedde70a1f56741adabf
+    callback:
+      url: http://localhost:8080/auth/github/callback
+    token:
+      url: https://github.com/login/oauth/access_token
