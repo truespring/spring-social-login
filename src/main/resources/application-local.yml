@@ -76,3 +76,5 @@ sns:
       url: http://localhost:8080/auth/github/callback
     token:
       url: https://github.com/login/oauth/access_token
+    user:
+      url: https://api.github.com/user/emails

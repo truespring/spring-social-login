@@ -104,9 +104,12 @@ public class GoogleOauth implements SocialOauth {
     @Override
     public String requestUserInfo(String accessTokenStr) {
         var restTemplate = new RestTemplate();
+
+        // google 에서 전해 받은 access_token 을 해당 url 로 다시 보냄
         String requestUrl = UriComponentsBuilder.fromHttpUrl(GOOGLE_SNS_USER_URL)
                 .queryParam("id_token", accessTokenStr).encode().toUriString(); // TODO 분석이 필요한 부분
 
+        // return 받음
         String resultJson = restTemplate.getForObject(requestUrl, String.class);
 
         ObjectMapper mapper = new ObjectMapper();
