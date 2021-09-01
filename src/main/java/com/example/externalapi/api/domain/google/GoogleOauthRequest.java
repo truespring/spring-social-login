@@ -1,9 +1,11 @@
 package com.example.externalapi.api.domain.google;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Builder
 public class GoogleOauthRequest {
 

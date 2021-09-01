@@ -1,8 +1,10 @@
 package com.example.externalapi.api.domain.naver;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class NaverOauthResponse {
 
     private String accessToken;

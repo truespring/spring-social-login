@@ -1,8 +1,10 @@
 package com.example.externalapi.api.domain.google;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class GoogleOauthResponse {
 
     private String accessToken;
