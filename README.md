@@ -26,6 +26,7 @@
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능)
 - domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
 - 이미 저장소에 올라간 yml history 에서도 지우기 (blog : https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
+- 형변환 깔끔하게 처리하기 (naver, kakao, github)
 
 ### 해결해야할 사항
 
