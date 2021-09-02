@@ -20,16 +20,17 @@
 - Spring Security 적용(blog : https://mangkyu.tistory.com/76) -> 따로 공부 후 적용
 - SNS Login 후 Logout 추가(취소)
 - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
-- DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민) -> (현재 google, naver, kakao)
+- DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민) -> (현재 google, naver, kakao, github) - 완료
 - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
 - aws route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능)
 - domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
+- 이미 저장소에 올라간 yml history 에서도 지우기 (blog : https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
 
 ### 해결해야할 사항
 
 - google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (https://nect2r.tistory.com/9) - 완료
-- github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄
+- github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄 - 완료
 - 무료 도메인을 얻어야 함 -> freenom 이란 사이트에서 무료 도메인을 얻을 수 있으나 현재 not available 인 상황
 
 ### Linux api setting
