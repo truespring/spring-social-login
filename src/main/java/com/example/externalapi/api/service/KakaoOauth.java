@@ -1,6 +1,9 @@
 package com.example.externalapi.api.service;
 
+import com.example.externalapi.api.domain.github.GithubOauthResponse;
+import com.example.externalapi.api.domain.kakao.KakaoOauthResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
@@ -16,10 +19,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -100,16 +100,16 @@ public class KakaoOauth implements SocialOauth {
         headers.set("Authorization", "Bearer " + accessToken); // header 에 값 담는 방법
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
 
-        ResponseEntity<JSONObject> responseEntity =
-                restTemplate.postForEntity(KAKAO_SNS_USER_URL, restRequest, JSONObject.class);
+        ResponseEntity<String> responseEntity =
+                restTemplate.postForEntity(KAKAO_SNS_USER_URL, restRequest, String.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             return "카카오 로그인 요청 처리 실패";
         }
 
-        JSONObject returnJSONObj = responseEntity.getBody();
-        LinkedHashMap<String, Object> kakaoAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("kakao_account"); // TODO 형변환에 관한 고찰이 필요함
+        KakaoOauthResponse response = mapper.readValue(responseEntity.getBody(), new TypeReference<>() {
+        });
 
-        return kakaoAccount.get("email").toString();
+        return response.getKakao_account().getEmail();
     }
 }
