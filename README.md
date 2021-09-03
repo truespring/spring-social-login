@@ -23,10 +23,10 @@
 - DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민) -> (현재 google, naver, kakao, github) - 완료
 - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
 - aws route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
-- 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능)
+- 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능) -> response 로 받을 수 있도록 완료
 - domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
 - 이미 저장소에 올라간 yml history 에서도 지우기 (blog : https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
-- 형변환 깔끔하게 처리하기 (naver, kakao, github)
+- 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
 
 ### 해결해야할 사항
 
