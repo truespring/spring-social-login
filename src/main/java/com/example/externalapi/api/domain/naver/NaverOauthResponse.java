@@ -7,10 +7,7 @@ import lombok.Setter;
 @Setter
 public class NaverOauthResponse {
 
-    private String accessToken;
-    private String expiresIn;
-    private String refreshToken;
-    private String scope;
-    private String tokenType;
-    private String idToken;
+    private String resultcode;
+    private String message;
+    private NaverResponse response;
 }

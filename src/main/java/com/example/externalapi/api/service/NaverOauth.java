@@ -1,6 +1,8 @@
 package com.example.externalapi.api.service;
 
+import com.example.externalapi.api.domain.naver.NaverOauthResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,7 +15,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -93,15 +94,16 @@ public class NaverOauth implements SocialOauth {
         headers.set("Authorization", "Bearer " + accessToken);
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
 
-        ResponseEntity<JSONObject> responseEntity =
-                restTemplate.postForEntity(NAVER_SNS_USER_URL, restRequest, JSONObject.class);
+        ResponseEntity<String> responseEntity =
+                restTemplate.postForEntity(NAVER_SNS_USER_URL, restRequest, String.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
             return "네이버 로그인 요청 처리 실패";
         }
-        JSONObject returnJSONObj = responseEntity.getBody();
-        LinkedHashMap<String, Object> naverAccount = (LinkedHashMap<String, Object>) returnJSONObj.get("response"); // TODO 형변환에 관한 고찰이 필요함
 
-        return naverAccount.get("email").toString();
+        NaverOauthResponse response = mapper.readValue(responseEntity.getBody(), new TypeReference<>() {
+        });
+
+        return response.getResponse().getEmail();
     }
 }
