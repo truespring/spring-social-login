@@ -27,7 +27,7 @@
 - domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
 - 이미 저장소에 올라간 yml history 에서도 지우기 (blog : https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
 - 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
-- 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료
+- 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기)
 
 ### 해결해야할 사항
 
