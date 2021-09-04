@@ -53,7 +53,7 @@ public class NaverOauth implements SocialOauth {
 
     @Override
     public String requestAccessToken(String code) {
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();

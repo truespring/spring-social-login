@@ -1,6 +1,5 @@
 package com.example.externalapi.api.service;
 
-import com.example.externalapi.api.domain.github.GithubOauthResponse;
 import com.example.externalapi.api.domain.kakao.KakaoOauthResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -58,7 +57,7 @@ public class KakaoOauth implements SocialOauth {
 
     @Override
     public String requestAccessToken(String code) {
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         // 토큰 발급을 위한 요청 파라미터

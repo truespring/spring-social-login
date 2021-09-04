@@ -69,7 +69,7 @@ public class GoogleOauth implements SocialOauth {
      */
     @Override
     public String requestAccessToken(String code) throws JsonProcessingException {
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
 
         GoogleOauthRequest googleOAuthRequestParam = GoogleOauthRequest
                 .builder()
@@ -103,7 +103,7 @@ public class GoogleOauth implements SocialOauth {
     @SneakyThrows
     @Override
     public String requestUserInfo(String accessTokenStr) {
-        var restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
 
         // google 에서 전해 받은 access_token 을 해당 url 로 다시 보냄
         String requestUrl = UriComponentsBuilder.fromHttpUrl(GOOGLE_SNS_USER_URL)
