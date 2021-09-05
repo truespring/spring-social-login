@@ -94,9 +94,13 @@ public class KakaoOauth implements SocialOauth {
             e.printStackTrace();
         }
 
+        // body 에 들어갈 내용
         MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
 
-        headers.set("Authorization", "Bearer " + accessToken); // header 에 값 담는 방법
+        assert accessToken != null;
+
+        // header Bearer 에 값 담는 방법
+        headers.setBearerAuth(accessToken);
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
 
         ResponseEntity<String> responseEntity =
