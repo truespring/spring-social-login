@@ -1,6 +1,7 @@
 package com.example.externalapi.api.slack.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class SlackApiServiceImpl implements SlackApiService {
 
@@ -59,7 +61,7 @@ public class SlackApiServiceImpl implements SlackApiService {
                 restTemplate.postForEntity(urlStr, restRequest, String.class);
 
         if (responseEntity.getStatusCode() != HttpStatus.OK) {
-            System.out.println("실패");
+            log.error(">> Slack API Fail :: {}", responseEntity);
         }
 
     }
