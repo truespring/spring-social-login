@@ -48,9 +48,18 @@
     3. naver -> localhost:8080/auth/NAVER
     4. github -> localhost:8080/auth/GITHUB
 
+- login 완료 후
+    - slack api 로 해당 채널에서 social login type 과 email 확인가능
+
 ### swagger
 
 - localhost:8080/swagger-ui.html
+
+### 프로젝트
+
+- 4가지의 social login 이 가능
+- login 과 동시에 db에 저장되며 회원가입 처리
+- 회원가입되면 slack 채널에 정보 전송
 
 ### 느낀점
 
