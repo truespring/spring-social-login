@@ -2,6 +2,7 @@ package com.example.externalapi.api.controller;
 
 import com.example.externalapi.api.constants.SocialLoginType;
 import com.example.externalapi.api.service.OauthService;
+import com.example.externalapi.api.slack.service.SlackApiServiceImpl;
 import com.example.externalapi.app.user.domain.entity.Users;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.Map;
 public class OauthController {
     private final OauthService oauthService;
     private final Map<String, Object> returnMap = new HashMap<>();
+    private final SlackApiServiceImpl slackApiService;
 
     /**
      * 사용자로부터 SNS 로그인 요청을 Social Login Type 을 받아 처리
@@ -63,5 +65,10 @@ public class OauthController {
     Map<String, Object> callbackPage() {
         log.info(">> 로그인 성공페이지 요청 받음 :: {}", returnMap);
         return returnMap;
+    }
+
+    @GetMapping(value = "/slack/api")
+    public void sendSlackApi(@RequestParam(name = "text") String text) {
+        slackApiService.sendSlackBody(text);
     }
 }

@@ -3,10 +3,7 @@ package com.example.externalapi.api.slack.service;
 import com.example.externalapi.api.constants.SocialLoginType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -22,6 +19,8 @@ public class SlackApiServiceImpl implements SlackApiService {
 
     @Value("${tool.slack.url}")
     private String SLACK_URL;
+    @Value("${tool.slack.webhook}")
+    private String SLACK_WEBHOOK;
     @Value("${tool.slack.token}")
     private String SLACK_TOKEN;
     @Value("${tool.slack.channel.id}")
@@ -49,7 +48,7 @@ public class SlackApiServiceImpl implements SlackApiService {
                 .collect(Collectors.joining("&"));
 
         // header setting
-        headers.set("Authorization", "Bearer " + SLACK_TOKEN);
+        headers.setBearerAuth(SLACK_TOKEN);
 
         MultiValueMap<String, Object> param = new LinkedMultiValueMap<>();
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(param, headers);
@@ -64,5 +63,19 @@ public class SlackApiServiceImpl implements SlackApiService {
             log.error(">> Slack API Fail :: {}", responseEntity);
         }
 
+    }
+
+    @Override
+    public void sendSlackBody(String text) {
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        // header Content-type 에 application/json 넣는 법
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> restRequest = new HttpEntity<>(text, headers);
+
+        restTemplate.postForEntity(SLACK_WEBHOOK, restRequest, String.class);
     }
 }
