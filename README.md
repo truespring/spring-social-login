@@ -28,6 +28,7 @@
 - 이미 저장소에 올라간 yml history 에서도 지우기 (blog : https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html)
 - 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
 - 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기)
+- swagger 에서 깔끔하게 볼 수 있도록 수정(현재는 페이지 이동으로 처리되어 있음)
 
 ### 해결해야할 사항
 
