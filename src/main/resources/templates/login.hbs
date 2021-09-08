@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="socialLoginDiv"></div>
@@ -17,17 +18,32 @@
         let socialLoginTypeKor = ['구글', '카카오', '네이버', '깃허브'];
         const socialLoginDiv = document.getElementById("socialLoginDiv");
         const createSocialLogin = () => {
-            for(let i = 0; i < socialLoginType.length; i++) {
+            for (let i = 0; i < socialLoginType.length; i++) {
                 const div = document.createElement('div');
-                const a = document.createElement('a');
-                a.href = 'http://localhost:8080/auth/' + socialLoginType[i];
-                a.innerText = socialLoginTypeKor[i] + ' 로그인';
-                div.append(a);
+                const loginLink = document.createElement('a');
+                loginLink.addEventListener('click', () => {
+                    locationSocialLoginPage(socialLoginType[i]);
+                });
+                loginLink.innerText = socialLoginTypeKor[i] + ' 로그인';
+                div.append(loginLink);
                 socialLoginDiv.append(div);
             }
         }
         createSocialLogin();
     }
+    function locationSocialLoginPage(socialLoginType) {
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://localhost:8080/auth/' + socialLoginType,
+                type: 'GET',
+                success: function (data) {
+                    console.log(data);
+                    location.href = data;
+                }
+            });
+        });
+    }
+
 </script>
 </body>
 </html>
