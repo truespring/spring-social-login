@@ -5,5 +5,6 @@ import com.example.externalapi.app.common.dto.CallbackDto;
 import com.example.externalapi.app.user.domain.entity.Users;
 
 public interface CallBackService {
+
     CallbackDto callBackInfo(String accessTokenStr, SocialLoginType socialLoginType, Users userInfo);
 }
