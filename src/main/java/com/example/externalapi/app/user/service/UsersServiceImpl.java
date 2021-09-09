@@ -1,6 +1,7 @@
 package com.example.externalapi.app.user.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
+import com.example.externalapi.api.slack.service.SlackApiServiceImpl;
 import com.example.externalapi.app.user.domain.entity.Users;
 import com.example.externalapi.app.user.domain.repository.UsersRepository;
 import lombok.AllArgsConstructor;
@@ -13,12 +14,14 @@ import java.util.Optional;
 public class UsersServiceImpl implements UsersService {
 
     private final UsersRepository usersRepository;
+    private final SlackApiServiceImpl slackApiService;
 
     @Override
     public Users getUserInfo(String userEmail, SocialLoginType socialLoginType) {
         Optional<Users> userInfo = usersRepository.findByUserEmail(userEmail);
         if (userInfo.isEmpty()) {
             // 회원가입
+            slackApiService.sendSlack(socialLoginType, userEmail);
             return signUpUser(userEmail, socialLoginType);
         }
         // 로그인 승인
