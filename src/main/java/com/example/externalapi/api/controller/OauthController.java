@@ -7,18 +7,21 @@ import com.example.externalapi.app.common.dto.CallbackDto;
 import com.example.externalapi.app.common.service.CallBackServiceImpl;
 import com.example.externalapi.app.user.domain.entity.Users;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @CrossOrigin
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RequestMapping(value = "/auth")
 @Slf4j
 public class OauthController {
-
     private final OauthService oauthService;
+    private final Map<String, Object> returnMap = new HashMap<>();
     private final SlackApiServiceImpl slackApiService;
     private final CallBackServiceImpl callBackService;
 
@@ -42,12 +45,22 @@ public class OauthController {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
         Users userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);
+//        returnMap.put("accessToken", accessTokenStr);
+//        returnMap.put("socialLoginType", socialLoginType);
+//        returnMap.put("userInfo", userInfo);
+//        return "success";
         return callBackService.callBackInfo(accessTokenStr, socialLoginType, userInfo);
+    }
+
+    @GetMapping(value = "/success")
+    public @ResponseBody
+    Map<String, Object> callbackPage() {
+        log.info(">> 로그인 성공페이지 요청 받음 :: {}", returnMap);
+        return returnMap;
     }
 
     @GetMapping(value = "/slack/api")
     public void sendSlackApi(@RequestParam(name = "text") String text) {
-        log.info(">> Slack Api 내용 :: {}", text);
         slackApiService.sendSlackBody(text);
     }
 }
