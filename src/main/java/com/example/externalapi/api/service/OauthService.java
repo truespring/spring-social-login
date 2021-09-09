@@ -1,11 +1,10 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.constants.SocialLoginType;
-import com.example.externalapi.api.slack.service.SlackApiServiceImpl;
 import com.example.externalapi.app.user.domain.entity.Users;
 import com.example.externalapi.app.user.service.UsersServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +13,11 @@ import java.util.List;
  * serviceImpl 역할
  */
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class OauthService {
+
     private final List<SocialOauth> socialOauthList; // implements 하는 클래스를 리스트로 만드는 것
     private final UsersServiceImpl usersServiceImpl;
-    private final SlackApiServiceImpl slackApiService;
 
     /**
      * 어떤 URL 로 리다이렉트 할 것인지 판단
@@ -41,7 +40,6 @@ public class OauthService {
     public Users requestUserInfo(SocialLoginType socialLoginType, String accessToken) throws JsonProcessingException {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
         String userEmail = socialOauth.requestUserInfo(accessToken);
-        slackApiService.sendSlack(socialLoginType, userEmail);
         return usersServiceImpl.getUserInfo(userEmail, socialLoginType);
     }
 
