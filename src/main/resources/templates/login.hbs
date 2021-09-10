@@ -7,6 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        a {
+            cursor: pointer;
+        }
+
+        #socialLoginDiv > div {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
 <div id="socialLoginDiv"></div>
@@ -31,6 +40,7 @@
         }
         createSocialLogin();
     }
+
     function locationSocialLoginPage(socialLoginType) {
         $(document).ready(function () {
             $.ajax({
