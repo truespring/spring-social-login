@@ -87,10 +87,8 @@ public class GithubOauth implements SocialOauth {
             e.printStackTrace();
         }
 
-        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
-
         headers.set("Authorization", "token " + accessToken);
-        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
+        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(null, headers);
 
         ResponseEntity<String> responseEntity =
                 restTemplate.exchange(GITHUB_SNS_USER_URL, HttpMethod.GET, restRequest, String.class);

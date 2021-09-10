@@ -89,11 +89,9 @@ public class NaverOauth implements SocialOauth {
             e.printStackTrace();
         }
 
-        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
-
         assert accessToken != null;
         headers.setBearerAuth(accessToken);
-        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(params, headers);
+        HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(null, headers);
 
         ResponseEntity<String> responseEntity =
                 restTemplate.postForEntity(NAVER_SNS_USER_URL, restRequest, String.class);
