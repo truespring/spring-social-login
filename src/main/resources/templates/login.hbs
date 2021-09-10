@@ -23,8 +23,11 @@
     init();
 
     function init() {
+        // 소셜 로그인에 관한 정보를 배열에 추가
         let socialLoginType = ['GOOGLE', 'KAKAO', 'NAVER', 'GITHUB'];
         let socialLoginTypeKor = ['구글', '카카오', '네이버', '깃허브'];
+
+        // 소셜 로그인 버튼 생성
         const socialLoginDiv = document.getElementById("socialLoginDiv");
         const createSocialLogin = () => {
             for (let i = 0; i < socialLoginType.length; i++) {
@@ -41,6 +44,7 @@
         createSocialLogin();
     }
 
+    // 소셜 로그인 페이지로 이동하는 함수
     function locationSocialLoginPage(socialLoginType) {
         $(document).ready(function () {
             $.ajax({
