@@ -45,10 +45,10 @@
 ### Request api
 
 - localhost:8080/login
-    1. google -> localhost:8080/auth/GOOGLE
-    2. kakao -> localhost:8080/auth/KAKAO
-    3. naver -> localhost:8080/auth/NAVER
-    4. github -> localhost:8080/auth/GITHUB
+1. google -> localhost:8080/auth/GOOGLE
+2. kakao -> localhost:8080/auth/KAKAO
+3. naver -> localhost:8080/auth/NAVER
+4. github -> localhost:8080/auth/GITHUB
 
 - login 완료 후
     - Slack api 로 해당 채널에서 social login type 과 email 확인가능
