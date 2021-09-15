@@ -103,13 +103,14 @@ public class GoogleOauth implements SocialOauth {
     public String requestUserInfo(String accessTokenStr) {
         RestTemplate restTemplate = new RestTemplate();
 
-        // google 에서 전해 받은 access_token 을 해당 url 로 다시 보냄
+        // url 을 만들어 id_token 에 인자를 담아서 던짐
         String requestUrl = UriComponentsBuilder.fromHttpUrl(GOOGLE_SNS_USER_URL)
-                .queryParam("id_token", accessTokenStr).encode().toUriString(); // TODO 분석이 필요한 부분
+                .queryParam("id_token", accessTokenStr).encode().toUriString();
 
         // return 받음
         String resultJson = restTemplate.getForObject(requestUrl, String.class);
 
+        // ObjectMapper 로 타입변환을 할 수 있도록 함
         ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
