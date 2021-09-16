@@ -51,6 +51,10 @@ dependencies {
 
     implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.2'
 
+    // log
+    implementation group: 'ch.qos.logback.contrib', name: 'logback-json-classic', version: '0.1.5'
+    implementation group: 'ch.qos.logback.contrib', name: 'logback-jackson', version: '0.1.5'
+
 }
 
 test {
