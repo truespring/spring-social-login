@@ -30,6 +30,7 @@
 - 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기 -> webhook 방법으로 body 에 String 을 넣어 보내기 완료)
 - Swagger 에서 깔끔하게 볼 수 있도록 수정(현재는 페이지 이동으로 처리되어 있음) -> restcontroller 로 변경하여 볼 수 있게 수정 중
 - 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함 blog: <a href="https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection">생성자 주입</a>, <a href="https://imasoftwareengineer.tistory.com/101">JavaBean</a>)
+- objectMapper 를 configuration 으로 등록시키기
 
 ### 해결해야할 사항
 
