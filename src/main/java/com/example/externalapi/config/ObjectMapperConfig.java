@@ -4,5 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ObjectMapperConfig extends ObjectMapper {
+public class ObjectMapperConfig {
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+
+    private ObjectMapperConfig() {}
+
+    public static ObjectMapper getInstance() {
+        return mapper;
+    }
 }

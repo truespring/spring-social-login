@@ -2,6 +2,7 @@ package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.domain.google.GoogleOauthRequest;
 import com.example.externalapi.api.domain.google.GoogleOauthResponse;
+import com.example.externalapi.config.ObjectMapperConfig;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -79,7 +80,7 @@ public class GoogleOauth implements SocialOauth {
 
         // JSON 파싱을 위한 기본값 세팅
         // 요청시 파라미터는 스네이크 케이스로 세팅되므로 Object mapper 에 미리 설정해준다.
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = ObjectMapperConfig.getInstance();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
@@ -111,7 +112,7 @@ public class GoogleOauth implements SocialOauth {
         String resultJson = restTemplate.getForObject(requestUrl, String.class);
 
         // ObjectMapper 로 타입변환을 할 수 있도록 함
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = ObjectMapperConfig.getInstance();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
