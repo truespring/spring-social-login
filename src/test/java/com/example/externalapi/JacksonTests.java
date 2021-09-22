@@ -49,7 +49,7 @@ public class JacksonTests {
         System.out.println(result);
     }
 
-    //
+    // null 제외, absent 제외, Collection, Map 의 isEmpty 이 true 이면 제외, Array length 가 0 이면 제외, String length 가 0 이면 제외
     @Test
     public void non_empty() throws JsonProcessingException {
         this.objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
@@ -58,7 +58,7 @@ public class JacksonTests {
         System.out.println(result);
     }
 
-    //
+    // empty 제외, primitive 타입이 디폴트 값이면 제외 (int / Integer : 0 , boolean / Boolean : false 등), Date 의 timestamp 가 0L 이면 제외
     @Test
     public void non_default() throws JsonProcessingException {
         this.objectMapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
