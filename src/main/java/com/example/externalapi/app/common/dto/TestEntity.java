@@ -12,29 +12,29 @@ import static java.util.Collections.emptyList;
 @Getter
 public class TestEntity {
 
-    private String string;
-    private String emptyString;
-    private Object nullValue;
-    private int number;
-    private int zero;
-    private List<String> list;
-    private List<String> emptyList;
-    private Date date;
-    private Date zeroDate;
-    private Optional<String> optional;
-    private Optional<String> emptyOptional;
+    private final String string;
+    private final String emptyString;
+    private final Object nullValue;
+    private final int number;
+    private final int zero;
+    private final List<String> list;
+    private final List<String> emptyList;
+    private final Date date;
+    private final Date zeroDate;
+    private final Optional<String> optional;
+    private final Optional<String> emptyOptional;
 
     public TestEntity() {
-        this.string = "민수";
-        this.emptyString = "";
-        this.nullValue = null;
-        this.number = 100;
-        this.zero = 0;
-        this.list = Arrays.asList("민수", "원우");
-        this.emptyList = emptyList();
-        date = new Date();
-        zeroDate = new Date(0L);
-        this.optional = Optional.of("민수");
-        this.emptyOptional = Optional.empty();
+        this.string = "민수"; // 문자열
+        this.emptyString = ""; // 빈문자열
+        this.nullValue = null; // null
+        this.number = 100; // 정수
+        this.zero = 0; // 0인 정수
+        this.list = Arrays.asList("민수", "원우"); // 리스트
+        this.emptyList = emptyList(); // 빈리스트
+        date = new Date(); // 날짜
+        zeroDate = new Date(0L); // 빈날짜
+        this.optional = Optional.of("민수"); // 값이 있는 Optional
+        this.emptyOptional = Optional.empty(); // 빈 Optional
     }
 }
