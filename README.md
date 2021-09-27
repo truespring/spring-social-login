@@ -17,7 +17,7 @@
 
 ### TODO List
 
-- Spring Security 적용(blog: <a href="https://mangkyu.tistory.com/76">spring security</a>) -> 따로 공부 후 적용
+- Spring Security 적용(blog: [spring security](https://mangkyu.tistory.com/76)) -> 따로 공부 후 적용
 - SNS Login 후 Logout 추가(취소)
 - Naver Login - NCP 에 아이디만 추가하면 됨(완료 - 개발자 ID는 따로 추가할 필요 없음)
 - DB 저장(소셜 로그인 시 어떤식으로 db에 저장할 것인지 고민) -> (현재 google, naver, kakao, github) - 완료
@@ -25,16 +25,16 @@
 - AWS route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능) -> response 로 받을 수 있도록 완료
 - Domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
-- 이미 저장소에 올라간 yml history 에서도 지우기 (blog: <a href="https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html">yml history 지우기</a>)
+- 이미 저장소에 올라간 yml history 에서도 지우기 (blog: [yml history 지우기](https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html))
 - 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
 - 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기 -> webhook 방법으로 body 에 String 을 넣어 보내기 완료)
 - Swagger 에서 깔끔하게 볼 수 있도록 수정(현재는 페이지 이동으로 처리되어 있음) -> restcontroller 로 변경하여 볼 수 있게 수정 중
-- 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함 blog: <a href="https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection">생성자 주입</a>, <a href="https://imasoftwareengineer.tistory.com/101">JavaBean</a>)
+- 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함 blog: [생성자 주입](https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection), [JavaBean](https://imasoftwareengineer.tistory.com/101))
 - objectMapper 를 configuration 으로 등록시키기
 
 ### 해결해야할 사항
 
-- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (blog: <a href="https://nect2r.tistory.com/9">구글 사용자 정보</a>) - 완료
+- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (blog: [구글 사용자 정보](https://nect2r.tistory.com/9)) - 완료
 - github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄 - 완료
 - 무료 도메인을 얻어야 함 -> freenom 이란 사이트에서 무료 도메인을 얻을 수 있으나 현재 not available 인 상황
 
@@ -70,3 +70,10 @@
 - 해당 프로젝트를 진행하며 구조에 대해 더 신경을 써야겠다고 느낌
 - REST API 에 대해 더 신경을 써야겠음
 - Spring 에 대한 공부가 더 필요함(각종 애노테이션, JavaBean, 예외 처리 등)
+    - annotation
+        * service, configuration, repository, autowired 등
+        * JPA 제공(Entity, Data 등)
+    - Entity, DTO, VO
+        * Entity (blog: [Entity & EntityManager](https://perfectacle.github.io/2018/01/14/jpa-entity-manager-factory/))
+        * DTO와 VO (유튜브 우테코 [url 추가예정]())
+    - Bean 등록
