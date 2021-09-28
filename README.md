@@ -77,3 +77,6 @@
         * Entity (blog: [Entity & EntityManager](https://perfectacle.github.io/2018/01/14/jpa-entity-manager-factory/))
         * DTO와 VO (유튜브 우테코 [url 추가예정]())
     - Bean 등록
+ - JPA에 대한 공부가 더 필요함
+    - JPQL (Blog: [JPQL 기본문법](https://sun-22.tistory.com/75))
+    - Projection (Blog: [JPA Projection](https://velog.io/@max9106/JPA-Projection))
