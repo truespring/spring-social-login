@@ -6,10 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@AllArgsConstructor
 @Entity
 @Getter
-@ToString
 @Builder
 public class Users {
 
