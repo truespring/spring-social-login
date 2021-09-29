@@ -75,7 +75,7 @@
         * JPA 제공(Entity, Data 등)
     - Entity, DTO, VO
         * Entity (blog: [Entity & EntityManager](https://perfectacle.github.io/2018/01/14/jpa-entity-manager-factory/))
-        * DTO와 VO (유튜브 우테코 [url 추가예정]())
+        * DTO와 VO (유튜브 우테코 [인비님의 DTO vs VO](https://www.youtube.com/watch?v=z5fUkck_RZM))
     - Bean 등록
  - JPA에 대한 공부가 더 필요함
     - JPQL (Blog: [JPQL 기본문법](https://sun-22.tistory.com/75))
