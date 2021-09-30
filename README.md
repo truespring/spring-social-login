@@ -71,7 +71,7 @@
 - REST API 에 대해 더 신경을 써야겠음
 - Spring 에 대한 공부가 더 필요함(각종 애노테이션, JavaBean, 예외 처리 등)
     - annotation
-        * service, configuration, repository, autowired 등
+        * service, configuration, repository, autowired 등(Blog: [annotation](https://codevang.tistory.com/258))
         * JPA 제공(Entity, Data 등)
     - Entity, DTO, VO
         * Entity (blog: [Entity & EntityManager](https://perfectacle.github.io/2018/01/14/jpa-entity-manager-factory/))
