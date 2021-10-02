@@ -1,7 +1,6 @@
 package com.example.externalapi.api.service;
 
 import com.example.externalapi.api.domain.github.GithubOauthResponse;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -73,7 +72,7 @@ public class GithubOauth implements SocialOauth {
     }
 
     @Override
-    public String requestUserInfo(String accessTokenStr) throws JsonProcessingException {
+    public String requestUserInfo(String accessTokenStr) throws Exception {
 
         String accessToken = null;
         RestTemplate restTemplate = new RestTemplate();
@@ -99,6 +98,6 @@ public class GithubOauth implements SocialOauth {
         });
 
         return list.stream().filter(GithubOauthResponse::getPrimary).map(GithubOauthResponse::getEmail).findFirst()
-                .orElse("");
+                .orElseThrow(() -> new Exception("이메일이 존재하지 않습니다."));
     }
 }

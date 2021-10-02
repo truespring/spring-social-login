@@ -37,7 +37,7 @@ public class OauthService {
      * @param accessToken     소셜 토큰
      * @return 로그인 / 회원가입
      */
-    public Users requestUserInfo(SocialLoginType socialLoginType, String accessToken) throws JsonProcessingException {
+    public Users requestUserInfo(SocialLoginType socialLoginType, String accessToken) throws Exception {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
         String userEmail = socialOauth.requestUserInfo(accessToken);
         return usersServiceImpl.getUserInfo(userEmail, socialLoginType);

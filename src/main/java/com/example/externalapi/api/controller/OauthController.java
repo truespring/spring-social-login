@@ -6,7 +6,6 @@ import com.example.externalapi.api.slack.service.SlackApiServiceImpl;
 import com.example.externalapi.app.common.dto.CallbackDto;
 import com.example.externalapi.app.common.service.CallBackServiceImpl;
 import com.example.externalapi.app.user.domain.entity.Users;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,7 @@ public class OauthController {
     @GetMapping(value = "/{socialLoginType}/callback")
     public CallbackDto callback(
             @PathVariable(name = "socialLoginType") SocialLoginType socialLoginType,
-            @RequestParam(name = "code") String code) throws JsonProcessingException {
+            @RequestParam(name = "code") String code) throws Exception {
         log.info(">> 소셜 로그인 API 서버로부터 받은 code :: {}", code);
         String accessTokenStr = oauthService.requestAccessToken(socialLoginType, code);
         Users userInfo = oauthService.requestUserInfo(socialLoginType, accessTokenStr);

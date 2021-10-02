@@ -27,7 +27,7 @@ public interface SocialOauth {
     /**
      * accessToken 을 통해 로그인한 사용자의 정보를 요청
      */
-    String requestUserInfo(String accessToken) throws JsonProcessingException;
+    String requestUserInfo(String accessToken) throws Exception;
 
     /**
      * interface 에서 메소드를 구현하는 방법 - default
