@@ -25,11 +25,14 @@
 - AWS route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능) -> response 로 받을 수 있도록 완료
 - Domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
-- 이미 저장소에 올라간 yml history 에서도 지우기 (blog: [yml history 지우기](https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html))
+- 이미 저장소에 올라간 yml history 에서도 지우기 (
+  blog: [yml history 지우기](https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html))
 - 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
 - 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기 -> webhook 방법으로 body 에 String 을 넣어 보내기 완료)
 - Swagger 에서 깔끔하게 볼 수 있도록 수정(현재는 페이지 이동으로 처리되어 있음) -> restcontroller 로 변경하여 볼 수 있게 수정 중
-- 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함 blog: [생성자 주입](https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection), [JavaBean](https://imasoftwareengineer.tistory.com/101))
+- 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함
+  blog: [생성자 주입](https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection)
+  , [JavaBean](https://imasoftwareengineer.tistory.com/101))
 - objectMapper 를 configuration 으로 등록시키기
 
 ### 해결해야할 사항
@@ -46,6 +49,7 @@
 ### Request api
 
 - localhost:8080/login
+
 1. google -> localhost:8080/auth/GOOGLE
 2. kakao -> localhost:8080/auth/KAKAO
 3. naver -> localhost:8080/auth/NAVER
@@ -53,10 +57,6 @@
 
 - login 완료 후
     - Slack api 로 해당 채널에서 social login type 과 email 확인가능
-
-### swagger
-
-- localhost:8080/swagger-ui.html
 
 ### 프로젝트
 
@@ -75,8 +75,8 @@
         * JPA 제공(Entity, Data 등)
     - Entity, DTO, VO
         * Entity (blog: [Entity & EntityManager](https://perfectacle.github.io/2018/01/14/jpa-entity-manager-factory/))
-        * DTO와 VO (유튜브 우테코 [인비님의 DTO vs VO](https://www.youtube.com/watch?v=z5fUkck_RZM))
+        * DTO 와 VO (유튜브 우테코 [인비님의 DTO vs VO](https://www.youtube.com/watch?v=z5fUkck_RZM))
     - Bean 등록
- - JPA에 대한 공부가 더 필요함
+- JPA 에 대한 공부가 더 필요함
     - JPQL (Blog: [JPQL 기본문법](https://sun-22.tistory.com/75))
     - Projection (Blog: [JPA Projection](https://velog.io/@max9106/JPA-Projection))
