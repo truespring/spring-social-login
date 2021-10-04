@@ -24,21 +24,21 @@
 - Facebook 대신 github 로 변경(로그인 구현 예정 - 완료)
 - AWS route 53 도입하여 dns 으로 sns 로그인 가능하도록 예정
 - 각 소셜별 dto 를 만들어 받을 수 있도록 추가 예정(현재 구글만 가능) -> response 로 받을 수 있도록 완료
-- Domain name 획득 예정(aws route 53과 연동) -> 현재 free domain name 획득하지 못함
+- Domain name 획득 예정(AWS route 53과 연동) -> 현재 free domain name 획득하지 못함
 - 이미 저장소에 올라간 yml history 에서도 지우기 (
   blog: [yml history 지우기](https://gmlwjd9405.github.io/2018/05/17/git-delete-incorrect-files.html))
 - 형변환 깔끔하게 처리하기 (naver, kakao, github) - 완료
 - 회원가입 성공 시 Slack 채널로 메시지 보내기 - 완료(추가 사항 - body 에 넣어서 넘겨보기 -> webhook 방법으로 body 에 String 을 넣어 보내기 완료)
-- Swagger 에서 깔끔하게 볼 수 있도록 수정(현재는 페이지 이동으로 처리되어 있음) -> restcontroller 로 변경하여 볼 수 있게 수정 중
+- Swagger 에서 깔끔하게 볼 수 있도록 수정 - 현재 프로젝트와는 맞지 않지만 볼 수 있도록 
 - 의존성 주입을 생성자 주입으로 변경 예정(JavaBean 규칙에 맞게 변경 포함
-  blog: [생성자 주입](https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection)
+  Blog: [생성자 주입](https://madplay.github.io/post/why-constructor-injection-is-better-than-field-injection)
   , [JavaBean](https://imasoftwareengineer.tistory.com/101))
 - objectMapper 를 configuration 으로 등록시키기
 
 ### 해결해야할 사항
 
-- google api 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (blog: [구글 사용자 정보](https://nect2r.tistory.com/9)) - 완료
-- github api 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄 - 완료
+- google API 에서 userinfo 를 얻어야 함 -> userinfo 를 얻는 문서를 못 찾는중 (blog: [구글 사용자 정보](https://nect2r.tistory.com/9)) - 완료
+- github API 에서 userinfo 를 얻어야 함 -> 아직 시도 안해봄 - 완료
 - 무료 도메인을 얻어야 함 -> freenom 이란 사이트에서 무료 도메인을 얻을 수 있으나 현재 not available 인 상황
 
 ### Linux api setting
@@ -56,14 +56,14 @@
 4. github -> localhost:8080/auth/GITHUB
 
 - login 완료 후
-    - Slack api 로 해당 채널에서 social login type 과 email 확인가능
+    - Slack API 로 해당 채널에서 social login type 과 email 확인가능
 
 ### 프로젝트
 
-- 4가지의 social login 이 가능(각 social 별 api 사용)
-- Login 과 동시에 db에 저장되며 회원가입 처리
-- 회원가입되면 slack 채널에 정보 전송(slack api 사용)
-- Spring 에서 사용하는 것들에 대한 공부와 반영(restTemplate, annotation 등)
+- 4가지의 social login 이 가능(각 social 별 API 사용)
+- Login 과 동시에 DB 에 저장되며 회원가입 처리
+- 회원가입되면 Slack 채널에 정보 전송(Slack API 사용)
+- Spring 에서 사용하는 것들에 대한 공부와 반영(RestTemplate, annotation 등)
 
 ### 느낀점
 
