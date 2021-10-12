@@ -43,8 +43,12 @@
 
 ### Linux api setting
 
-- brew install curl (curl 을 설치할 수 있음)
-- curl -X GET http://127.0.0.1:8080/auth/GOOGLE (Rest API 요청)
+``` shall
+// curl 을 설치
+$ brew install curl
+// api 호출
+$ curl -X GET http://127.0.0.8080/auth/GOOGLE
+```
 
 ### Request api
 
