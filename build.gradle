@@ -21,35 +21,35 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.3'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.3'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools:2.5.6'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
 
     // spring security
 //    implementation 'org.springframework.boot:spring-boot-starter-security:2.5.3'
 
     // jpa
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.3'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.5.6'
 
     // project lombok
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
     // WebClient 사용
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.5.0'
 
     // JSON
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.google.code.gson:gson:2.8.9'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
     // postgresql
-    runtimeOnly 'org.postgresql:postgresql:42.2.23.jre7'
+    runtimeOnly 'org.postgresql:postgresql:42.3.1'
 
     // Swagger : API 문서
     implementation 'io.springfox:springfox-swagger2:2.9.1'
     implementation 'io.springfox:springfox-swagger-ui:2.9.1'
 
-    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.2'
+    implementation 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.3'
 
     // log
     implementation group: 'ch.qos.logback.contrib', name: 'logback-json-classic', version: '0.1.5'
